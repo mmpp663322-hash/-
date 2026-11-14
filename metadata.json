@@ -1,0 +1,6 @@
+{
+  "name": "منصة سؤال وجواب",
+  "description": "موقع تفاعلي للأسئلة والأجوبة مع خيارات لأنواع الأسئلة وخانة ملاحظات ذكية تُطبَّق مباشرة على الأسئلة والأجوبة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
