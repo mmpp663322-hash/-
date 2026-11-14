@@ -116,11 +116,18 @@ export default function App() {
           body: JSON.stringify(payload),
         });
 
-        const data = (await res.json()) as GenerateQuestionsResponse & {
-          error?: string;
-        };
+        let data: GenerateQuestionsResponse & { error?: string };
+        try {
+          data = (await res.json()) as GenerateQuestionsResponse & {
+            error?: string;
+          };
+        } catch {
+          throw new Error(
+            'تعذر الاتصال بخدمة توليد الأسئلة، يرجى المحاولة مجدداً.'
+          );
+        }
 
-        if (!res.ok) {
+        if (!res.ok || data.error || !Array.isArray(data.questions)) {
           throw new Error(
             data.error || 'تعذر توليد الأسئلة في الوقت الحالي، يرجى المحاولة مجدداً.'
           );
